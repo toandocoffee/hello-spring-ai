@@ -1,0 +1,22 @@
+spring:
+  config:
+    activate:
+      on-profile: azure-openai
+  autoconfigure:
+    exclude: org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration
+  ai:
+    azure:
+      openai:
+        api-key: ${AZURE_OPENAI_API_KEY}
+        endpoint: ${AZURE_OPENAI_ENDPOINT}
+        model: ${AZURE_OPENAI_MODEL}
+---
+spring:
+  config:
+    activate:
+      on-profile: openai
+  autoconfigure:
+    exclude: org.springframework.ai.autoconfigure.azure.openai.AzureOpenAiAutoConfiguration
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
